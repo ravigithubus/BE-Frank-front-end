@@ -1,0 +1,134 @@
+
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Poppins', sans-serif;
+}
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px;
+    font-family: 'Poppins', sans-serif;
+    background-color: rgb(123, 181, 228);
+    background: linear-gradient(rgb(92, 158, 211), rgb(175, 197, 232));
+    color: white;
+}
+
+
+.vsm-contact-deatails {
+    display: flex;
+    justify-content: center;
+
+}
+
+.vsm-contact-deatails span {
+    font-size: 20px;
+}
+
+.vsm-contact-deatails a {
+    transition: 200ms;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+#vsm-adress {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 22rem;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+#vsm-email-phone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.vsm-contact-deatails a:hover {
+    transition: 200ms;
+    color: rgb(38, 38, 38);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50rem;
+    margin-top: 30px;
+}
+
+.contact-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form textarea {
+    width: 60%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border:none;
+    outline: none;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: rgb(92, 158, 211);
+}
+
+.contact-form textarea {
+    resize: none;
+}
+
+.contact-form button {
+    background-color: rgb(242, 41, 15);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: rgb(204, 18, 18);
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 768px) {
+    .contact-section {
+        padding: 30px;
+    }
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form input[type="tel"],
+    .contact-form textarea {
+        font-size: 0.9em;
+    }
+
+    .contact-form {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form input[type="tel"],
+    .contact-form textarea {
+        font-size: 0.8em;
+    }
+}

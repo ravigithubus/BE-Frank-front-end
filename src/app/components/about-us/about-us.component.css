@@ -1,0 +1,64 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Poppins', sans-serif;
+}
+.about-section {
+    background-color: rgb(123, 181, 228);
+    background: linear-gradient(rgb(92, 158, 211), rgb(175, 197, 232));
+    color: #fff;
+    text-align: center;
+    padding: 50px;
+}
+
+.display-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.about-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: rgba(255, 237, 247, 0.95);
+    display: inline;
+}
+
+.about-section p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    width: 40rem;
+}
+
+.about-section img {
+    height: 25rem;
+    border-radius: 15px;
+}
+
+#about-be-frank-img {
+    height: 16rem;
+    border-radius: 15px;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 768px) {
+    .about-section {
+        padding: 30px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .about-section {
+        padding: 20px;
+    }
+
+    .about-section h2 {
+        font-size: 1.5em;
+    }
+
+    .about-section p {
+        font-size: 1em;
+    }
+}

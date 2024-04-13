@@ -1,0 +1,9 @@
+<div class="container">
+    <button (click)="addEvent()">Add event</button>
+    <div class="event-container" *ngFor="let event of post" (click)="openEvent(event)">
+        <img src={{event.imgUrl[0].imgUrl}} alt="">
+    </div>
+    <app-look-event (closeEvent)="showEvent=$event" [event]="eventTochild"  class="look-event" *ngIf="showEvent===true"></app-look-event>
+</div>
+
+
