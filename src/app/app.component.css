@@ -5,3 +5,8 @@
 .footer{
     max-height:7%;
 }
+.header{
+    position:sticky;
+    top:0px;
+    width:100%;
+}

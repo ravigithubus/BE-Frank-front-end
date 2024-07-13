@@ -1,1 +1,10 @@
-<p>delete-event works!</p>
+
+<div class="conatiner">
+    <b>Do You really want to delete this event</b>
+    <h1>{{data.EventName}}</h1>
+    <div>
+        <button (click)="DeleteEvent(data.imgId)">Yes</button>
+        <button (click)="cancelDeleteevent()">Cancel</button>
+    </div>
+   
+</div>

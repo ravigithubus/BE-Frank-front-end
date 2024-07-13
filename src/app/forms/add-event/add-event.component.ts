@@ -1,9 +1,10 @@
 
 import {MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit,ViewChild,ElementRef} from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ImageUploadService } from 'src/app/imagesupload.service';
+import { ApiService } from 'src/app/servises/api.service';
 
 
 @Component({
@@ -21,27 +22,15 @@ export class AddEventComponent implements OnInit {
     selectedImage!:any;
     selectedFile!: File;
     uploadedImage:boolean=false;
-    constructor(private dialogConfig:MatDialogRef<AddEventComponent>,private formBuilder: FormBuilder,private http: HttpClient,private imageUploadService: ImageUploadService){}
+    constructor(private dialogConfig:MatDialogRef<AddEventComponent>,private formBuilder: FormBuilder,private http: HttpClient,private imageUploadService: ImageUploadService,private apiService:ApiService){}
 
     ngOnInit(): void {
 
       this.postForm = this.formBuilder.group({
-        title: ['', Validators.required],
+        title:new FormControl('', Validators.required),
         desc: ['', Validators.required],
-        imgUrl:this.formBuilder.array([
-          {
-            imgTitle:['',Validators.required],
-            imgUrl:['',Validators.required],
-            imgDesc:['',Validators.required]
-          }
-        ]),
-        vidArrUrl:this.formBuilder.array([
-          {
-            vidTitle:['',Validators.required],
-            vidUrl:['',Validators.required],
-            vidDesc:['',Validators.required]
-          }
-        ]),
+        imgUrl: [[]],
+        vidArrUrl:[[]],
         addedByUserName: ['', Validators.required],
         role:['',Validators.required],
       });
@@ -59,31 +48,26 @@ export class AddEventComponent implements OnInit {
         imgDesc:['',Validators.required]
       })
     }
-
-
-    
-  get vidArrUrl(): FormArray {
-    return this.postForm.get('vidArrUrl') as FormArray;
-  }
     
     addVidurl(){
       if(this.vidForm.valid){
-        this.vidArrUrls.push(this.vidForm.value);
+        const vidArrUrlArray = this.postForm.get('vidArrUrl')!.value as any[];
+        vidArrUrlArray.push(this.vidForm.value);
+        this.postForm.get('vidArrUrl')!.setValue(vidArrUrlArray);
         this.vidForm.reset();
-        console.log(this.vidArrUrls);
-        this.vidArrUrl.push(this.formBuilder.control(this.vidForm.value))
-        console.log(this.vidArrUrl)
+        const vidArrArray = this.postForm.get('vidArrUrl')!.value as any[];
+        console.log(vidArrArray);
       }
     }
 
-    // get imgUrl(): FormArray {
-    //   return this.postForm.get('imgUrl') as FormArray;
-    // }
     addImageurl(){
         if(this.imgForm.valid){
-          this.imageUrls.push(this.imgForm.value);
-          console.log(this.imageUrls);
+          const imgUrlArray = this.postForm.get('imgUrl')!.value as any[];
+          imgUrlArray.push(this.imgForm.value);
+          this.postForm.get('imgUrl')!.setValue(imgUrlArray);
           this.imgForm.reset();
+          const imgArray = this.postForm.get('imgUrl')!.value as any[];
+          console.log(imgArray);
           this.selectedImage = null;
           this.imageUrl="";
           this.uploadedImage=false;
@@ -105,12 +89,7 @@ export class AddEventComponent implements OnInit {
 
     onSubmit() {
       if (this.postForm.valid) {
-        // this.http.post('https://jsonplaceholder.typicode.com/posts', this.postForm.value)
-        //   .subscribe(response => {
-        //     console.log('Post created successfully:', response);
-        //   }, error => {
-        //     console.error('Error creating post:', error);
-        //   });
+        this.apiService.postData(this.postForm.value);
         console.log(this.postForm.value)
         this.postForm.reset()
       }

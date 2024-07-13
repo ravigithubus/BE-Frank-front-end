@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ApiService } from 'src/app/servises/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEventComponent } from 'src/app/forms/add-event/add-event.component';
+import { DeleteEventComponent } from 'src/app/forms/delete-event/delete-event.component';
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
@@ -33,9 +34,20 @@ export class EventsComponent {
 
     
     getPost(){
-      this.apiservice.getPosts().subscribe(data=>{
+      this.apiservice.data$.subscribe(data=>{
         this.post=data;
+      })    
+    }
+    deleteEvent(id:any,name:any){
+      const dialogRef=this.dialog.open(DeleteEventComponent,{
+        width:'50%',
+        height:'40%',
+        data:{
+            imgId:id,
+            EventName:name
+        }
       })
+      
     }
     openEvent(event:any){
       this.showEvent=true;

@@ -15,8 +15,8 @@ export class HomeComponent {
     }
 
     getPost(){
-      this.apiservice.getPosts().subscribe(data=>{
-        this.post=data;
-      })
+        this.apiservice.data$.subscribe(data=>{
+          this.post=data;
+        })
     }
 }
