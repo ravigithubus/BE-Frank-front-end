@@ -1,10 +1,19 @@
 <header>
+  <div class="logo">
+    <img src="assets\team.png" alt="">
+  </div>
     <div class="header-element">
+      <input type="checkbox"  id="toggle-check">
+      <label for="toggle-check">Menu</label>
       <ul>
+        <label for="toggle-check" id="close-menu">Close</label>
         <li><a routerLink='home' routerLinkActive="highlight">Home</a></li>
         <li><a routerLink="events" routerLinkActive="highlight">Events</a></li>
         <li><a routerLink="about-us" routerLinkActive="highlight">About Us</a></li>
         <li><a routerLink="contact_us" routerLinkActive="highlight">Contact Us</a></li>
+        <button class="login-button" (click)="openLoginPage()">Login</button>
+        <button class="register-button" (click)="openResisterPage()">Register</button>
       </ul>
     </div>
+   
   </header>

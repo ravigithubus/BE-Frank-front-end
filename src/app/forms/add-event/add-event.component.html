@@ -1,59 +1,69 @@
+<form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="title">Event Title:</label>
+    <input id="title" formControlName="title">
+    <!-- <div *ngIf="postForm.get('title').invalid && postForm.get('title').touched">
+      Title is required.
+    </div> -->
+  </div>
+  
+  <div>
+    <label for="desc">Event Description:</label>
+    <textarea id="desc" formControlName="desc"></textarea>
+    <!-- <div *ngIf="postForm.get('body').invalid && postForm.get('body').touched">
+      Body is required.
+    </div> -->
+  </div>
+    
+  <div>
+    <label for="addedByUserName">Added By UserName:</label>
+    <input type="text" id="addedByUserName" formControlName="addedByUserName">
+    <!-- <div *ngIf="postForm.get('body').invalid && postForm.get('body').touched">
+      Body is required.
+    </div> -->
+  </div>
 
-<button (click)="closeDialog()">close</button>
-<div class="container">
-  <h2>Create Post</h2>
-  <form [formGroup]="postForm" (ngSubmit)="submitForm()" enctype="multipart/form-data">
-    <mat-form-field class="full-width">
-      <input matInput formControlName="title" placeholder="Title">
-      <mat-error *ngIf="postForm.controls['title'].hasError('required')">Title is required</mat-error>
-      <mat-error *ngIf="postForm.controls['title'].hasError('maxlength')">Title cannot exceed 1000 characters</mat-error>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <textarea matInput formControlName="desc" placeholder="Description"></textarea>
-      <mat-error *ngIf="postForm.controls['desc'].hasError('required')">Description is required</mat-error>
-      <mat-error *ngIf="postForm.controls['desc'].hasError('maxlength')">Description cannot exceed 5000 characters</mat-error>
-    </mat-form-field>
-    <!-- Image URL FormArray -->
-    <div formArrayName="imgUrl">
-    <input type="file" (change)="onFileSelected($event)" accept="image/*">
-      <div *ngFor="let img of imgUrlControls; let i = index">
-        <div [formGroupName]="i">
-          <mat-form-field class="full-width">
-            <input matInput formControlName="imgTitle" placeholder="Image Title">
-          </mat-form-field>
-          <mat-form-field class="full-width">
-            <input matInput formControlName="imgUrl" placeholder="Image URL">
-          </mat-form-field>
-          <mat-form-field class="full-width">
-            <textarea matInput formControlName="imgDesc" placeholder="Image Description"></textarea>
-          </mat-form-field>
-        </div>
-      </div>
-    </div>
-    <!-- Video URL FormArray -->
-    <div formArrayName="vidArrUrl">
-      <div *ngFor="let vid of vidArrUrlControls; let i = index">
-        <div [formGroupName]="i">
-          <mat-form-field class="full-width">
-            <input matInput formControlName="vidTitle" placeholder="Video Title">
-          </mat-form-field>
-          <mat-form-field class="full-width">
-            <input matInput formControlName="vidUrl" placeholder="Video URL">
-          </mat-form-field>
-          <mat-form-field class="full-width">
-            <textarea matInput formControlName="vidDesc" placeholder="Video Description"></textarea>
-          </mat-form-field>
-        </div>
-      </div>
-    </div>
-    <mat-form-field class="full-width">
-      <input matInput formControlName="addedByUserName" placeholder="Added By User Name">
-      <mat-error *ngIf="postForm.controls['addedByUserName'].hasError('required')">Added By User Name is required</mat-error>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <input matInput formControlName="role" placeholder="Role">
-      <mat-error *ngIf="postForm.controls['role'].hasError('required')">Role is required</mat-error>
-    </mat-form-field>
-    <button mat-raised-button color="primary" type="submit">Submit</button>
+  <div>
+    <label for="role">Role:</label>
+    <input type="text" id="role" formControlName="role">
+    <!-- <div *ngIf="postForm.get('body').invalid && postForm.get('body').touched">
+      Body is required.
+    </div> -->
+  </div>
+
+  <form [formGroup]="vidForm" (ngSubmit)="addVidurl()">
+    <label for="vidTitle">Video Title:</label>
+    <input type="text" id="vidTitle" formControlName="vidTitle">
+
+    <label for="vidUrl">Video Url:</label>
+    <input type="text" formControlName="vidUrl" id="vidUrl">
+
+    <label for="vidDesc">Video Description:</label>
+    <input type="text" formControlName="vidDesc" id="vidDesc">
+
+    <button type="submit">Add</button>
+
   </form>
-</div>
+
+  <form [formGroup]="imgForm" (ngSubmit)="addImageurl()">
+    <label for="imgUrl">Select images:</label>
+    <input type="file"  id="imgUrl" (change)="onFileSelected($event)">
+    <div id="images">
+      <img src="{{ selectedImage }}" alt="">
+      <button *ngIf="selectedImage" (click)="uploadImage()">Upload Image</button>
+      <button *ngIf="selectedImage" (click)="deleteImage()">Delete Image</button>
+      <b *ngIf="uploadedImage">Image Uploaded</b>
+    </div>
+
+    <label for="imgTitle">Image Title:</label>
+    <input type="text" id="imgTitle" formControlName="imgTitle">
+
+    <label for="imgDesc">Image Description:</label>
+    <input type="text" formControlName="imgDesc" id="imgDesc">
+
+    <button type="submit">Add</button>
+  </form>
+
+  <button type="submit" >Submit</button>
+</form>
+<!-- [disabled]="postForm.invalid" -->

@@ -20,8 +20,8 @@ export class EventsComponent {
 
     addEvent(){
        const dialogRef= this.dialog.open(AddEventComponent,{
-          width:'70%',
-          height:'90%',
+          width:'50%',
+          height:'100%',
           data:{
             name:"Ravids Gaikwad"
           }

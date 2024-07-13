@@ -1,33 +1,36 @@
-* {
-    padding: 0px;
-    margin: 0px;
-    font-family: 'Poppins', sans-serif;
-}
+
 header {
     background-color: rgb(123, 181, 228);
     background: linear-gradient(rgb(92, 158, 211), rgb(175, 197, 232));
-    padding: 1rem 5%;
-    position: sticky;
-    top: 1px;
-}
+    padding: 1rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Poppins', sans-serif;
 
+}
+.logo{
+    width:80px;
+    height:50px;
+}
+.logo img{
+    width:100%;
+    height:100%;
+}
 .header-element {
     /* background-color: rgb(115, 115, 159); */
     text-decoration: none;
     padding: 0px 2%;
-    display: flex;
-    justify-content: space-between;
+    /* display: flex; */
+    /* justify-content: space-between; */
 }
 
 .header-element ul {
     display: flex;
+    align-items: center;
     justify-content: space-evenly;
 }
 
 .header-element ul li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     list-style: none;
     box-sizing: border-box;
 }
@@ -53,4 +56,59 @@ header {
 
 .highlight{
     border-bottom:2px solid green;
+}
+
+.login-button{
+    width:80px;
+    height:40px;
+    margin-right:10px;
+}
+.register-button{
+    width:100px;
+    height:40px;
+    margin-left:10px;
+}
+
+#toggle-check,label{
+    display:none;
+}
+
+@media screen and (max-width:600px){
+    label{
+        display: block;
+    }
+    .header-element ul{
+        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+        height: 50%;
+        position: fixed;
+        top:10px;
+        right:-100%;
+        flex-wrap: wrap;
+        background-color: rgb(124, 120, 120);
+        color: #ffff;
+    }
+
+    .header-element ul li{
+        margin: 10px;
+    }
+
+    #toggle-check:checked ~ul{
+        right:18%;
+    }
+    #close-menu{
+        position: absolute;
+        top:5px;
+        right:5px;
+        width:50px;
+        height:25px;
+        border:1px solid black;
+        margin:5px;
+        text-align: center;
+        border-radius: 4px;
+    }
 }

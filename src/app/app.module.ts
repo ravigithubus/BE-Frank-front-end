@@ -26,6 +26,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { LoginComponent } from './forms/login/login.component';
+import { RegisterComponent } from './forms/register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +40,9 @@ import { MatButtonModule } from '@angular/material/button';
     LookEventComponent,
     AddEventComponent,
     UpdateEventComponent,
-    DeleteEventComponent
+    DeleteEventComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

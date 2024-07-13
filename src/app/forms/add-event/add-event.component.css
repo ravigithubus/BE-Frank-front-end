@@ -1,0 +1,72 @@
+/* Styles for the overall form */
+form {
+    max-width:100%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Styles for each form group */
+  form div {
+    margin-bottom: 15px;
+  }
+  
+  /* Styles for the labels */
+  form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  /* Styles for input fields */
+  form input[type="text"],
+  form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  /* Styles for the submit button */
+  form button[type="submit"] {
+    width: 100%;
+    margin:10px;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Styles for the add button */
+  form button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styles for the form within a form */
+  form form {
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+  
+  /* Optional: Styles for disabled submit button */
+  form button[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  #images li{
+    width: 100px;
+    height:100px;
+  }
+  #images li img{
+    width: 100%;
+    height: 100%;
+  }
+  
