@@ -28,6 +28,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginComponent } from './forms/login/login.component';
 import { RegisterComponent } from './forms/register/register.component';
+import { ImageGalleryComponent } from './components/events/look-event/image-gallery/image-gallery.component';
+import { ImagePreviewComponent } from './forms/image-preview/image-preview.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +44,9 @@ import { RegisterComponent } from './forms/register/register.component';
     UpdateEventComponent,
     DeleteEventComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ImageGalleryComponent,
+    ImagePreviewComponent
   ],
   imports: [
     BrowserModule,

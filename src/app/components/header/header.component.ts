@@ -15,8 +15,8 @@ export class HeaderComponent {
   }
   openLoginPage(){
       const dialogRef= this.dialog.open(LoginComponent,{
-        width:'50%',
-        height:'100%',
+        width:'40%',
+        height:'50%',
         data:{
           name:"Ravids Gaikwad"
         }
@@ -29,8 +29,8 @@ export class HeaderComponent {
 
   openResisterPage(){
     const dialogRef= this.dialog.open(RegisterComponent,{
-      width:'50%',
-      height:'100%',
+      width:'40%',
+      height:'65%',
       data:{
         name:"Ravids Gaikwad"
       }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { ApiService } from 'src/app/servises/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEventComponent } from 'src/app/forms/add-event/add-event.component';

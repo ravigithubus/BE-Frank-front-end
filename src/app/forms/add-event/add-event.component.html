@@ -1,4 +1,5 @@
 <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+  <span class="material-symbols-outlined close-button" (click)="closeDialog()">close</span>
   <div>
     <label for="title">Event Title:</label>
     <input id="title" formControlName="title">

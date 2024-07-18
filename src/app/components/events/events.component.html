@@ -1,10 +1,11 @@
 <div class="container">
-    <button (click)="addEvent()">Add event</button>
+ <button  class="add-button"   (click)="addEvent()"><span class="material-symbols-outlined">add</span>Add event</button>
     <div class="event-container" *ngFor="let event of post">
         <img src={{event.imgUrl[0].imgUrl}} alt="">
         <b>{{event.title}}</b>
+        <b>{{event._id}}</b>
         <button (click)="openEvent(event)">Open</button>
-        <button (click)="deleteEvent(event._id,event.title)">Delete</button>
+        <span class="material-symbols-outlined delete-button" (click)="deleteEvent(event._id,event.title)">delete</span>
     </div>
     <app-look-event (closeEvent)="showEvent=$event" [event]="eventTochild"  class="look-event" *ngIf="showEvent===true"></app-look-event>
 </div>

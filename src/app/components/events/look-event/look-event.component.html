@@ -1,4 +1,14 @@
-<div class="container">
-    <button class="back-Button"   (click)="goBackTodashboard()">Back</button>
+<div class="container">   
+    <span class="material-symbols-outlined back-Button" (click)="goBackTodashboard()">arrow_back</span>
     <h1>{{event.title}}</h1>
+    <app-image-gallery  [images]="images"></app-image-gallery>
+    <div class="video-url-container">
+        <h2>Videos</h2>
+        <div class="video-container" *ngFor="let vid of event.vidArrUrl">
+            <h4>{{vid.vidTitle}}</h4>
+            <a href="{{vid.vidUrl}}" target="_blank"><span class="material-symbols-outlined play_circle">play_circle</span></a>
+            <p>{{vid.vidDesc}}</p>
+        </div>
+       
+    </div>
 </div>

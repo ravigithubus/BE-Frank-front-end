@@ -1,0 +1,12 @@
+
+<div class="preview-container">
+    <button mat-icon-button (click)="navigate(-1)">
+      <-
+    </button>
+    <img [src]="images[index].imgUrl" alt="Preview Image">
+    <button mat-icon-button (click)="navigate(1)">
+      ->
+    </button>
+    <button mat-button (click)="cancel()">Cancel</button>
+  </div>
+  

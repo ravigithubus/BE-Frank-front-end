@@ -4,15 +4,14 @@
   </div>
     <div class="header-element">
       <input type="checkbox"  id="toggle-check">
-      <label for="toggle-check">Menu</label>
+      <label for="toggle-check"><span class="material-symbols-outlined">menu</span></label>
       <ul>
-        <label for="toggle-check" id="close-menu">Close</label>
+        <label for="toggle-check"><span class="material-symbols-outlined">close</span></label>
         <li><a routerLink='home' routerLinkActive="highlight">Home</a></li>
         <li><a routerLink="events" routerLinkActive="highlight">Events</a></li>
         <li><a routerLink="about-us" routerLinkActive="highlight">About Us</a></li>
         <li><a routerLink="contact_us" routerLinkActive="highlight">Contact Us</a></li>
-        <button class="login-button" (click)="openLoginPage()">Login</button>
-        <button class="register-button" (click)="openResisterPage()">Register</button>
+        <button class="login-button" (click)="openLoginPage()"><span class="material-symbols-outlined login-icon">login</span>Login</button>
       </ul>
     </div>
    
