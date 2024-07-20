@@ -5,26 +5,33 @@
     align-items: center;
     background: linear-gradient(rgb(175, 197, 232), rgb(131, 169, 200));
     height: 600px;
-    padding-top:10px;  
+    padding:20px 10px;  
     overflow-y: scroll;
 }
 
 .event-container{
     width:90%;
     height:120px;
-    border: 1px solid black;
+    border:none;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-radius:8px;
-    padding:10px;
+    padding:5px 10px;
+   box-shadow:5px 5px 10px rgb(18, 18, 18);
     box-sizing: border-box;
+   
 }
 .event-container img{
-    width:20%;
-    height:95%;
+    width:25%;
+    height:98%;
     border-radius:8px;
 }
+
+.event-container b{
+    text-transform: capitalize;
+}
+
 
 .look-event{
     position: fixed;
@@ -48,4 +55,32 @@ button{
     align-items: center;
     border-radius: 8px;
     font-weight:700;
+}
+
+.input-search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    color: black;
+    border: transparent;
+    text-align: center;
+    border-radius:8px;
+    height: 25px;
+    padding: 15px 12px 15px 24px;
+    margin-top: 24px;
+}
+
+.input-search input {
+    border:none;
+    outline: none;
+    padding: 7px;
+    border-radius:4px;
+    width:88%;
+}
+
+.input-search button {
+    cursor: pointer;
+    border: none;
+    background-color: inherit;
 }

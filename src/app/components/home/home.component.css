@@ -24,35 +24,6 @@
     text-align: center;
 }
 
-.input-search {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: white;
-    color: black;
-    border: transparent;
-    text-align: center;
-    border-radius: 25px;
-    height: 25px;
-    padding: 15px 12px 15px 24px;
-    margin-top: 24px;
-}
-
-.input-search input {
-    border:none;
-    outline: none;
-    padding: 7px;
-    border-radius: 10px;
-    width: 58%;
-}
-
-.input-search button {
-    background-color: rgb(242, 41, 15);
-    color: white;
-    padding: 12px;
-    border-radius: 20px;
-    border: 50px;
-}
 
 .first-main-content-right {
     display: flex;
@@ -114,12 +85,12 @@
     border: solid 2px grey;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, .8);
     scroll-behavior: smooth;
+    cursor: pointer;
 }
 
 .cart img {
     height: 150px;
     border-radius: 10px;
-    cursor: pointer;
 }
 
 .cart h6 {

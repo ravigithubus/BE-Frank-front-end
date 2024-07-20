@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/servises/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEventComponent } from 'src/app/forms/add-event/add-event.component';
 import { DeleteEventComponent } from 'src/app/forms/delete-event/delete-event.component';
+import { LookEventComponent } from './look-event/look-event.component';
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
@@ -10,14 +11,19 @@ import { DeleteEventComponent } from 'src/app/forms/delete-event/delete-event.co
 })
 export class EventsComponent {
     post:any[]=[];
-    showEvent:boolean=false;
     eventTochild:any;
+    searchTerm: string = '';
     constructor(private apiservice:ApiService,private dialog:MatDialog){}
     ngOnInit(){
       this.getPost();
       console.log(this.post);
     }
 
+    get filteredItems() {
+      return this.post.filter(item =>
+        item.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
 
     addEvent(){
        const dialogRef= this.dialog.open(AddEventComponent,{
@@ -36,6 +42,7 @@ export class EventsComponent {
     getPost(){
       this.apiservice.data$.subscribe(data=>{
         this.post=data;
+        this.post.reverse();
       })    
     }
     deleteEvent(id:any,name:any){
@@ -49,8 +56,17 @@ export class EventsComponent {
       })
       
     }
+
     openEvent(event:any){
-      this.showEvent=true;
-      this.eventTochild=event;
+        const dialogRef= this.dialog.open(LookEventComponent,{
+          width:'100%',
+          height:'100%',
+          data:{
+            event:event
+          }
+        })  
+      dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');
+      });
     }
 }

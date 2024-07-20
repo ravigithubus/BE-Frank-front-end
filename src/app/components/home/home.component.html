@@ -11,15 +11,11 @@
     </div>
 
     <div class="second-main-content">
-      <div class="input-search">
-        <input type="text" placeholder="Search for an event name" />
-        <button class="button">Search Event</button>
-      </div>
       <div class="second-main-text">
         <p>Our Recent Be Frank</p>
       </div>
       <div class="second-main-carts">
-        <div class="cart" *ngFor="let event of post">
+        <div class="cart" *ngFor="let event of recentEvents" (click)="openEvent(event)">
           <img src={{event.imgUrl[0].imgUrl}} alt="img" />
           <h6>{{event.title}}</h6>
           <p>{{event.timeStamp}}</p>

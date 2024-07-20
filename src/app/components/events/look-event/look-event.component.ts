@@ -1,4 +1,5 @@
-import { Component,Input,Output,EventEmitter} from '@angular/core';
+import { Component,Input,Output,EventEmitter, Inject} from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-look-event',
@@ -6,17 +7,19 @@ import { Component,Input,Output,EventEmitter} from '@angular/core';
   styleUrls: ['./look-event.component.css']
 })
 export class LookEventComponent {
-    @Input() event:any;
+    event:any;
     @Output() closeEvent=new EventEmitter<boolean>
     images!: any[];
-    constructor(){}
+    constructor(private dialogConfig:MatDialogRef<LookEventComponent>,@Inject(MAT_DIALOG_DATA) public data:any){
+    }
     ngOnInit(){
+      this.event=this.data.event;
       this.images=this.event.imgUrl;
       console.log( this.images);
       console.log("opened")
     }
     
     goBackTodashboard(){
-        this.closeEvent.emit(false);
+        this.dialogConfig.close();
     }
 }
