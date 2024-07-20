@@ -8,7 +8,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class LookEventComponent {
     event:any;
-    @Output() closeEvent=new EventEmitter<boolean>
     images!: any[];
     constructor(private dialogConfig:MatDialogRef<LookEventComponent>,@Inject(MAT_DIALOG_DATA) public data:any){
     }

@@ -4,9 +4,9 @@
     <app-image-gallery  [images]="images"></app-image-gallery>
     <div class="video-url-container">
         <h2>Videos</h2>
-        <div class="video-container" *ngFor="let vid of event.vidArrUrl">
-            <h4>{{vid.vidTitle}}</h4>
-            <a href="{{vid.vidUrl}}" target="_blank"><span class="material-symbols-outlined play_circle">play_circle</span></a>
+        <div class="video-container" *ngFor="let vid of event.vidArrUrl;let i=index">
+            <h4>{{i+1+"."+vid.vidTitle}}</h4>
+            <a href="{{vid.vidUrl}}" target="_blank" ><span class="material-symbols-outlined play_circle" title="Play video">play_circle</span></a>
             <p>{{vid.vidDesc}}</p>
         </div>
        
