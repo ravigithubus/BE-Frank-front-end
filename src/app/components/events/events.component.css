@@ -15,20 +15,20 @@
     border:none;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     border-radius:8px;
     padding:5px 10px;
-   box-shadow:5px 5px 10px rgb(18, 18, 18);
+    box-shadow:5px 5px 10px rgb(18, 18, 18);
     box-sizing: border-box;
-   
+    cursor: pointer;
 }
 .event-container img{
-    width:25%;
-    height:98%;
+    max-width:25%;
+    max-height:98%;
     border-radius:8px;
 }
 
 .event-container b{
+    margin:0px 20px;
     text-transform: capitalize;
 }
 

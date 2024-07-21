@@ -1,5 +1,6 @@
 import { Component,Input,Output,EventEmitter, Inject} from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { DeleteEventComponent } from 'src/app/forms/delete-event/delete-event.component';
 
 @Component({
   selector: 'app-look-event',
@@ -9,7 +10,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class LookEventComponent {
     event:any;
     images!: any[];
-    constructor(private dialogConfig:MatDialogRef<LookEventComponent>,@Inject(MAT_DIALOG_DATA) public data:any){
+    constructor(private dialog:MatDialog,private dialogConfig:MatDialogRef<LookEventComponent>,@Inject(MAT_DIALOG_DATA) public data:any){
     }
     ngOnInit(){
       this.event=this.data.event;
@@ -20,5 +21,17 @@ export class LookEventComponent {
     
     goBackTodashboard(){
         this.dialogConfig.close();
+    }
+
+    deleteEvent(id:any,name:any){
+      const dialogRef=this.dialog.open(DeleteEventComponent,{
+        width:'50%',
+        height:'40%',
+        data:{
+            imgId:id,
+            EventName:name
+        }
+      })
+      
     }
 }

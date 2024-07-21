@@ -4,6 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddEventComponent } from 'src/app/forms/add-event/add-event.component';
 import { DeleteEventComponent } from 'src/app/forms/delete-event/delete-event.component';
 import { LookEventComponent } from './look-event/look-event.component';
+
+
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
@@ -45,17 +47,7 @@ export class EventsComponent {
         this.post.reverse();
       })    
     }
-    deleteEvent(id:any,name:any){
-      const dialogRef=this.dialog.open(DeleteEventComponent,{
-        width:'50%',
-        height:'40%',
-        data:{
-            imgId:id,
-            EventName:name
-        }
-      })
-      
-    }
+
 
     openEvent(event:any){
         const dialogRef= this.dialog.open(LookEventComponent,{
@@ -69,4 +61,9 @@ export class EventsComponent {
           console.log('The dialog was closed');
       });
     }
+    
+    formatDate(input:any){
+        return this.apiservice.formatDate(input);
+    }
+    
 }

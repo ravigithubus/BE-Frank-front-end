@@ -1,6 +1,12 @@
 <div class="container">   
-    <span class="material-symbols-outlined back-Button" (click)="goBackTodashboard()">arrow_back</span>
+    <div class="back-delete-button">
+        <span class="material-symbols-outlined back-Button" (click)="goBackTodashboard()">arrow_back</span>
+        <span class="material-symbols-outlined delete-button" (click)="deleteEvent(event._id,event.title)">delete</span>
+    </div>
     <h1 id="title">{{event.title}}</h1>
+    <div class="decription">
+        {{event.desc}}
+    </div>
     <app-image-gallery  [images]="images"></app-image-gallery>
     <div class="video-url-container">
         <h2>Videos</h2>

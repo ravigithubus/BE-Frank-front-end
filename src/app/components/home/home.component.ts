@@ -37,4 +37,7 @@ export class HomeComponent {
         console.log('The dialog was closed');
     });
   }
+  formatDate(input:any){
+    return this.apiservice.formatDate(input);
+  }
 }
