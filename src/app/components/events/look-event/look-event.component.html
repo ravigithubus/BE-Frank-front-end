@@ -4,6 +4,7 @@
         <span class="material-symbols-outlined delete-button" (click)="deleteEvent(event._id,event.title)">delete</span>
     </div>
     <h1 id="title">{{event.title}}</h1>
+    <b>{{formatDate(event.timeStamp)}}</b>
     <div class="decription">
         {{event.desc}}
     </div>

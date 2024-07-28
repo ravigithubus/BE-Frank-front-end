@@ -75,3 +75,9 @@ form {
     right: 20px;
     cursor: pointer;
   }
+
+  #title{
+    width:70%;
+    height:30px;
+    border-radius:8px;
+  }
