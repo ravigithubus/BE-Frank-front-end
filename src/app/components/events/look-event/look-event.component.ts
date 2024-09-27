@@ -38,4 +38,16 @@ export class LookEventComponent {
     formatDate(date:any){
       return this.apiService.formatDate(date);
     }
+
+    extractVideoId(youtubeUrl:any) {
+      const url = new URL(youtubeUrl);
+      const videoIdParam = url.searchParams.get('v');
+      if (videoIdParam) {
+        return videoIdParam;
+      } else {
+        // Handle short YouTube links (https://youtu.be/VIDEO_ID)
+        const pathParts = url.pathname.split('/');
+        return pathParts[pathParts.length - 1];  // Last part of the path is the ID
+      }
+    }
 }

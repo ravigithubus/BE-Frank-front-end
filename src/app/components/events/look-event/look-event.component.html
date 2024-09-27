@@ -11,11 +11,15 @@
     <app-image-gallery  [images]="images"></app-image-gallery>
     <div class="video-url-container">
         <h2>Videos</h2>
-        <div class="video-container" *ngFor="let vid of event.vidArrUrl;let i=index">
-            <h4>{{i+1+"."+vid.vidTitle}}</h4>
-            <a href="{{vid.vidUrl}}" target="_blank" ><span class="material-symbols-outlined play_circle" title="Play video">play_circle</span></a>
+        <a class="video-container" href="{{vid.vidUrl}}" target="_blank" *ngFor="let vid of event.vidArrUrl;let i=index">
+          <div class="thumbnail">
+            <img [src]="'https://img.youtube.com/vi/' + extractVideoId(vid.vidUrl) + '/maxresdefault.jpg'" alt="YouTube Video Thumbnail">
+            <div class="play-button">&#9658;</div>
+          </div>
+          <div class="titel">
+            <h4>{{i+1+"."+vid.vidTitle}}&nbsp;&nbsp;{{formatDate(event.timeStamp)}}</h4>
             <p>{{vid.vidDesc}}</p>
-        </div>
-       
+          </div>
+          </a>
     </div>
 </div>

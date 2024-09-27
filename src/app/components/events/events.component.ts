@@ -44,7 +44,6 @@ export class EventsComponent {
     getPost(){
       this.apiservice.data$.subscribe(data=>{
         this.post=data;
-        this.post.reverse();
       })    
     }
 

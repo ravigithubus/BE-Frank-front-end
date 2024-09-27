@@ -16,7 +16,7 @@ export class ApiService {
  
   getPosts():void{
     this.http.get<any[]>(`${this.apiUrl}/post`).subscribe(data=>{
-      this.dataSubject.next(data);
+      this.dataSubject.next(data.reverse());
     })
   }
 

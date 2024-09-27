@@ -1,14 +1,35 @@
 <div class="main" id="home">
-    <div class="first-main-content" >
-      <div class="first-main-content-left">
-        <h1>Empower Students, Empower Nation</h1>
-        <p>VSM is a thinking...</p>
-      </div>
 
-      <div class="first-main-content-right">
-        <img src="/assets/together_study.png" alt="img" />
+    <div class="slider-container">
+      <div class="slider-wrapper" [style.transform]="transformStyle">
+        <!-- Image Slides -->
+        <div class="slide">
+          <img src="assets\img_snow_wide.jpg" alt="Image 1">
+        </div>
+        <div class="slide">
+          <img src="assets\img_nature_wide.jpg" alt="Image 2">
+        </div>
+        <div class="slide">
+          <img src="assets\img_snow_wide.jpg" alt="Image 3">
+        </div>
+    
+       <!-- Video Slide -->
+    <div class="slide">
+      <video #videoSlide width="100%" (play)="pauseAutoplay()" (pause)="resumeAutoplay()">
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>>
+    
+      <!-- Controls -->
+      <div class="navigation">
+        <button (click)="prevSlide()"><span class="material-symbols-outlined">arrow_back</span></button>
+        <button (click)="nextSlide()"><span class="material-symbols-outlined">arrow_forward</span></button>
       </div>
     </div>
+    
+
+
 
     <div class="second-main-content">
       <div class="second-main-text">

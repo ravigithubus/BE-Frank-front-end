@@ -1,13 +1,17 @@
 <div class="container">
-    <div class="input-search">
-        <input type="text" placeholder="Search for an event name"  [(ngModel)]="searchTerm" />
-        <button class="button"><span class="material-symbols-outlined">search</span></button>
+    <div class="search-button-container">
+        <div class="input-search">
+            <input type="text" placeholder="Search for an event name"  [(ngModel)]="searchTerm" />
+            <button class="button"><span class="material-symbols-outlined">search</span></button>
+        </div>
+        <button  class="add-button"   (click)="addEvent()"><span class="material-symbols-outlined">add</span>Add event</button>
     </div>
- <button  class="add-button"   (click)="addEvent()"><span class="material-symbols-outlined">add</span>Add event</button>
-    <div class="event-container" *ngFor="let event of post" (click)="openEvent(event)">
-        <img src={{event.imgUrl[0].imgUrl}} alt="">
-        <b>{{event.title}}</b>
-        <b>{{formatDate(event.timeStamp)}}</b>
+    <div class="event-stack">
+        <div class="event-container" *ngFor="let event of post" (click)="openEvent(event)">
+            <img src={{event.imgUrl[0].imgUrl}} alt="">
+            <b>{{event.title}}</b>
+            <b>{{formatDate(event.timeStamp)}}</b>
+        </div>
     </div>
 </div>
 
