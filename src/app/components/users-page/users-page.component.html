@@ -1,0 +1,34 @@
+<div class="add-button">
+  <button  class="add-button"   (click)="addUser()"><span class="material-symbols-outlined">add</span></button>
+</div>
+<div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{user.username }}</td>
+          <td>{{user.gmail}}</td>
+          <td>{{user.password}}</td>
+          <td>
+            <button (click)="editUser(user)">Edit</button>
+            <button (click)="deleteUser(user._id,user.username)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+
+<!-- gmail
+password
+username
+_id -->

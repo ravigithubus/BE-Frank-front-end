@@ -31,6 +31,8 @@ import { RegisterComponent } from './forms/register/register.component';
 import { ImageGalleryComponent } from './components/events/look-event/image-gallery/image-gallery.component';
 import { ImagePreviewComponent } from './forms/image-preview/image-preview.component';
 import { CommonModule, DatePipe } from '@angular/common';
+import { UsersPageComponent } from './components/users-page/users-page.component';
+import { DeleteUserComponent } from './forms/delete-user/delete-user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +49,9 @@ import { CommonModule, DatePipe } from '@angular/common';
     LoginComponent,
     RegisterComponent,
     ImageGalleryComponent,
-    ImagePreviewComponent
+    ImagePreviewComponent,
+    UsersPageComponent,
+    DeleteUserComponent
   ],
   imports: [
     BrowserModule,

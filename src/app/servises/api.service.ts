@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { post } from '../models/post-model';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +13,7 @@ export class ApiService {
   public data$: Observable<any[]> = this.dataSubject.asObservable();
 
   private apiUrl=environment.apiUrl;
-  constructor(private http:HttpClient,private datePipe: DatePipe){ }
+  constructor(private http:HttpClient,private datePipe: DatePipe,private router: Router){ }
  
   getPosts():void{
     this.http.get<any[]>(`${this.apiUrl}/post`).subscribe(data=>{
@@ -30,8 +31,9 @@ export class ApiService {
   }
 
   deleteData(id:any) {
-    this.http.delete(`https://vsm-be-frank.onrender.com/post/${id}`)
+    this.http.delete(`${this.apiUrl}/post/${id}`)
       .subscribe(() => {
+        this.router.navigate(['/home']);
         this.getPosts(); // Refresh data after delete
       });
   }
