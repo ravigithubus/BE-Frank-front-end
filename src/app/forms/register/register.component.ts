@@ -10,20 +10,18 @@ import { AuthService } from 'src/app/servises/Auth/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  name: string = '';
-  email: string = '';
-  password: string = '';
+  name!:string;
+  email!:string;
+  password!:string;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router,private dialogRef:MatDialogRef<RegisterComponent>) {}
 
   onSubmit(form: NgForm): void {
     this.authService.register({ username:this.name, gmail: this.email, password: this.password }).subscribe(
       response => {
-        //this.dialogRef.close();
         form.reset();
-        console.log('Registration successful', response);
+        this.dialogRef.close();
         this.authService.getAllUser();
-        //this.router.navigate(['/login']); // Redirect to login page
       },
       error => {
         console.error('Registration failed', error);

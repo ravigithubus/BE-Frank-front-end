@@ -1,4 +1,4 @@
-import { Dialog } from '@angular/cdk/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Component } from '@angular/core';
 import { DeleteUserComponent } from 'src/app/forms/delete-user/delete-user.component';
 import { RegisterComponent } from 'src/app/forms/register/register.component';
@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/servises/Auth/auth.service';
 export class UsersPageComponent {
   users!:any[];
 
-  constructor(private authservice:AuthService,private dialog:Dialog){}
+  constructor(private authservice:AuthService,private dialog:MatDialog){}
   ngOnInit(){
     this.authservice.users$.subscribe(users=>{
       this.users=users;
@@ -44,8 +44,8 @@ export class UsersPageComponent {
            name:"Ravids Gaikwad"
          }
        })  
-    //  dialogRef.afterClosed().subscribe(result => {
-    //      console.log('The dialog was closed');
-    //  });
+     dialogRef.afterClosed().subscribe(result => {
+         console.log('The dialog was closed');
+     });
   }
 }

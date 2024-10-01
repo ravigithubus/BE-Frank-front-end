@@ -1,7 +1,6 @@
 * {
     padding: 0px;
     margin: 0px;
-    font-family: 'Poppins', sans-serif;
 }
 footer {
     background: linear-gradient(rgb(213, 223, 237), rgb(131, 169, 200));
@@ -23,7 +22,6 @@ footer {
 }
 
 footer {
-    background: linear-gradient(rgb(213, 223, 237), rgb(131, 169, 200));
     padding-top:15px;
     display: flex;
     justify-content: center;
@@ -46,7 +44,6 @@ footer {
 
 .footer-col h4 {
     margin-bottom: 10px;
-    color: rgb(92, 158, 211);
 }
 
 .footer-col ul {
