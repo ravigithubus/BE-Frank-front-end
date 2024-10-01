@@ -13,8 +13,9 @@ import { LookEventComponent } from './look-event/look-event.component';
 })
 export class EventsComponent {
     post:any[]=[];
+    postSearched:any[]=[];
     eventTochild:any;
-    searchTerm: string = '';
+    searchTerm!:string;
     constructor(private apiservice:ApiService,private dialog:MatDialog){}
     ngOnInit(){
       this.getPost();
@@ -63,6 +64,18 @@ export class EventsComponent {
     
     formatDate(input:any){
         return this.apiservice.formatDate(input);
+    }
+
+    findevent(){
+      if(this.searchTerm){
+        this.postSearched = this.post.filter(event =>
+          event.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+        );
+        this.post=this.postSearched;
+      }
+      else{
+        this.getPost();
+      }
     }
     
 }

@@ -51,7 +51,8 @@ import { DeleteUserComponent } from './forms/delete-user/delete-user.component';
     ImageGalleryComponent,
     ImagePreviewComponent,
     UsersPageComponent,
-    DeleteUserComponent
+    DeleteUserComponent,
+ 
   ],
   imports: [
     BrowserModule,
