@@ -21,5 +21,4 @@ export class DeleteUserComponent {
   cancelDeleteuser(){
       this.dialogConfig.close();
   }
-
 }
