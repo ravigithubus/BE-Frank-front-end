@@ -9,23 +9,12 @@ import { AuthService } from 'src/app/servises/Auth/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  userName: string = '';
+  gmail: string = '';
   password: string = '';
-
+  response: string | undefined;
   constructor(private authService: AuthService, private router: Router,private dialogRef:MatDialogRef<LoginComponent>) {}
 
   onSubmit(): void {
-    this.authService.login({ username: this.userName, password: this.password }).subscribe(
-      response => {
-        if(response){
-          this.dialogRef.close();
-        }
-        console.log('Login successful', response);
-        //this.router.navigate(['/']); // Redirect to home page or dashboard
-      },
-      error => {
-        console.error('Login failed', error);
-      }
-    );
+    this.response=this.authService.login({ email: this.gmail, password: this.password });
   }
 }

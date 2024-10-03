@@ -11,10 +11,12 @@ import { ApiService } from 'src/app/servises/api.service';
 export class LookEventComponent {
     event:any;
     images!: any[];
+    token!:any;
     constructor(private apiService:ApiService,private dialog:MatDialog,private dialogConfig:MatDialogRef<LookEventComponent>,@Inject(MAT_DIALOG_DATA) public data:any){
     }
     ngOnInit(){
       this.event=this.data.event;
+      this.token=this.data.token;
       this.images=this.event.imgUrl;
       console.log( this.images);
       console.log("opened")

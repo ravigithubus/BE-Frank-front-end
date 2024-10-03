@@ -14,23 +14,22 @@
           <p>Phone: +91 9987-437-446</p>
           <p>Email: info@vsmthane.org</p>
       </div>
-      <div class="contact-us-right">
-          <h1>Contact Form</h1>
-          <form action="">
-              <div class="contact-us-right-labels">
-                  <label for="name">Full Name</label>
-                  <label for="email">Email</label>
-                  <label for="phone">Phone</label>
-                  <label for="msg">Message</label>
-              </div>
-              <div class="contact-us-right-inputs">
-                  <input type="text">
-                  <input type="email">
-                  <input type="text">
-                  <textarea name="" id="" cols="30" rows="10"></textarea>
-              </div>
-          </form>
-          <button>Send Message</button>
-      </div>
-  </div>
+   
+            <div class="contact-us-right">
+                <h2>Send SMS</h2>
+                <form (ngSubmit)="sendSms(smsForm)" #smsForm="ngForm">
+                  <div>
+                    <label for="phoneNumber">Name:</label>
+                    <input type="text" id="phoneNumber"  [(ngModel)]="smsData.name" name="phoneNumber">
+                  </div>
+                  <div>
+                    <label for="message">Message:</label>
+                    <textarea id="message"  [(ngModel)]="smsData.message" name="message"></textarea>
+                    <button type="submit">Send SMS</button>
+                  </div>
+              
+                </form>
+                <p *ngIf="response">{{ response }}</p>            
+            </div>
+        </div>
 </section>

@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddEventComponent } from 'src/app/forms/add-event/add-event.component';
 import { DeleteEventComponent } from 'src/app/forms/delete-event/delete-event.component';
 import { LookEventComponent } from './look-event/look-event.component';
+import { AuthService } from 'src/app/servises/Auth/auth.service';
 
 
 @Component({
@@ -16,10 +17,14 @@ export class EventsComponent {
     postSearched:any[]=[];
     eventTochild:any;
     searchTerm!:string;
-    constructor(private apiservice:ApiService,private dialog:MatDialog){}
+    Usertoken!:any;
+    constructor(private apiservice:ApiService,private authService: AuthService,private dialog:MatDialog){}
     ngOnInit(){
       this.getPost();
-      console.log(this.post);
+      this.authService.token$.subscribe(data=>{
+        this.Usertoken=data;
+      })
+      console.log(this.Usertoken);
     }
 
     get filteredItems() {
@@ -54,6 +59,7 @@ export class EventsComponent {
           width:'100%',
           height:'100%',
           data:{
+            token:this.Usertoken,
             event:event
           }
         })  
