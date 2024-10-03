@@ -2,8 +2,8 @@
   <h2>Login</h2>
   <form (ngSubmit)="onSubmit()">
     <div>
-      <label for="userName">Username:</label>
-      <input type="userName" id="userName" [(ngModel)]="userName" name="userName" required>
+      <label for="userName">Email:</label>
+      <input type="userName" id="userName" [(ngModel)]="gmail" name="userName" required>
     </div>
     <div>
       <label for="password">Password:</label>
@@ -11,5 +11,9 @@
     </div>
     
     <button type="submit">Login</button>
+    <div class="message">
+      {{response}}
+    </div>
   </form>
+
 </div>

@@ -1,8 +1,7 @@
 
 .contact-us {
-    box-sizing: border-box;
     width: 100%;
-    height: 100vh;
+    height: auto;
     padding: 2rem;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -33,61 +32,103 @@
 }
 
 .contact-us-left p{
-    line-height: .4rem;
+    line-height:1.4;
     font-size: 1.2rem;
 }
 
+
+
+/* Styling for the form container */
 .contact-us-right {
-    margin-left: .8rem;
-    width: 60%;
-    background-color: orange;
-}
-
-.contact-us-right form {
-    display: flex;
-    justify-content: space-between;
-}
-
-.contact-us-right h1 {
-    padding: 0 1.4rem;
-}
-
-.contact-us-right-labels {
-    display: flex;
-    flex-direction: column;
-    padding: 0 2rem;
-}
-
-.contact-us-right-inputs {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .contact-us-right h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 24px;
+  }
+  
+  /* Form styling */
+  .contact-us-right form {
     display: flex;
     flex-direction: column;
-    float: right;
-    width: 64%;
-    padding: 0 2rem;
-}
-
-.contact-us-right-inputs input,
-textarea {
-    margin: .6rem 0;
-    padding: .8rem .8rem;
-    border-radius: .4rem;
-    border: none;
-}
-
-.contact-us-right-labels label {
-    margin: 1.2rem 0;
+  }
+  
+  .contact-us-right label {
     font-weight: bold;
-    font-size: 1rem;
-}
-
-.contact-us-right button {
-    padding: .8rem .8rem;
-    background-color: rgb(104, 54, 255);
-    border-radius: .4rem;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  .contact-us-right input[type="text"],
+  .contact-us-right textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+    width: 100%;
+  }
+  
+  .contact-us-right input[type="text"]:focus,
+  .contact-us-right textarea:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Button styling */
+  .contact-us-right button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
     border: none;
-    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  .contact-us-right button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 600px) {
+    .contact-us-right {
+      padding: 15px;
+    }
+  
+    .contact-us-right h2 {
+      font-size: 22px;
+    }
+  
+    .contact-us-right input[type="text"],
+    .contact-us-right textarea {
+      font-size: 14px;
+    }
+  
+    .contact-us-right button {
+      font-size: 14px;
+    }
+  }
+  
+  /* Response message */
+  .contact-us-right p {
+    text-align: center;
+    color: #28a745;
     font-weight: bold;
-    font-size: 1rem;
-    position: relative;
-    left: 80%;
-}
+    margin-top: 15px;
+  }
+  
+

@@ -10,9 +10,10 @@ export class AuthService {
   private apiUrl=environment.apiUrl;
   private userSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
   public users$: Observable<any[]> = this.userSubject.asObservable();
-
+  private loginSubject = new BehaviorSubject<any>(null);
+  public token$: Observable<any> = this.loginSubject.asObservable();
   constructor(private http: HttpClient) { }
-
+ 
   getAllUser(){
     this.http.get<any>(`${this.apiUrl}/user`).subscribe(users=>{
       this.userSubject.next(users);
@@ -28,7 +29,18 @@ export class AuthService {
       });
   }
 
-  login(credentials: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, credentials);
+  login(credentials: any):any{
+      this.http.post<any>(`${environment.authUrl}/login`, credentials).subscribe(
+        response => {
+          console.log('Login successful', response);
+          this.loginSubject.next(response.token);
+
+          return 'Login successful';
+        },
+        error => {
+          console.error('Login failed', error);
+          return 'Login failed';
+        }
+      );
   }
 }

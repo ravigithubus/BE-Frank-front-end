@@ -37,6 +37,7 @@
       </div>
       <div class="second-main-carts">
         <div class="cart" *ngFor="let event of recentEvents" (click)="openEvent(event)">
+          <img src="assets\pin.png" alt="" id="pin">
           <img src={{event.imgUrl[0].imgUrl}} alt="img" />
           <h6>{{event.title}}</h6>
           <p>{{formatDate(event.timeStamp)}}</p>
