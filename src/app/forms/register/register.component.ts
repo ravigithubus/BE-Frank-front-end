@@ -17,11 +17,12 @@ export class RegisterComponent {
   constructor(private authService: AuthService, private router: Router,private dialogRef:MatDialogRef<RegisterComponent>) {}
 
   onSubmit(form: NgForm): void {
-    this.authService.register({ username:this.name, gmail: this.email, password: this.password }).subscribe(
+    this.authService.register({ username:this.name, email: this.email, password: this.password ,role:"admin"}).subscribe(
       response => {
         form.reset();
-        this.dialogRef.close();
-        this.authService.getAllUser();
+        //this.dialogRef.close();
+        //this.authService.getAllUser();
+        console.log("Registration successful",response);
       },
       error => {
         console.error('Registration failed', error);
@@ -29,3 +30,7 @@ export class RegisterComponent {
     );
   }
 }
+/*   "username":"Ritesh P",
+"email":"ritesh98@gmail.com",
+"password":"Ritesh@123", 
+"role":"admin" */

@@ -2,7 +2,6 @@
     <div class="gallery-item" *ngFor="let image of images; let i = index"  (click)="openPreview(i)">
       <b>{{image.imgTitle}}</b>
       <img [src]="image.imgUrl" alt="Image {{i + 1}}">
-      <p>{{image.imgDesc}}</p>
     </div>
   </div>
   

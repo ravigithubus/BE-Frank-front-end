@@ -11,10 +11,26 @@ import { AuthService } from 'src/app/servises/Auth/auth.service';
 export class LoginComponent {
   gmail: string = '';
   password: string = '';
-  response: string | undefined;
+  response!:string;
+  successMessage!: string;
+  errorMessage!: string;
   constructor(private authService: AuthService, private router: Router,private dialogRef:MatDialogRef<LoginComponent>) {}
 
-  onSubmit(): void {
-    this.response=this.authService.login({ email: this.gmail, password: this.password });
+  onSubmit(): any{
+    this.authService.login({ email: this.gmail, password: this.password }).subscribe(
+      response => {
+        if (response.token) {
+          this.successMessage = 'Logged in successfully!';
+          this.errorMessage = '';
+        } else if (response.error) {
+          this.errorMessage = response.error;
+          this.successMessage = '';
+        }
+      },
+      error => {
+        console.error('Login failed', error);
+        
+      }
+    );
   }
 }

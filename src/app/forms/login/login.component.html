@@ -11,8 +11,14 @@
     </div>
     
     <button type="submit">Login</button>
-    <div class="message">
-      {{response}}
+    <!-- Success Message -->
+    <div *ngIf="successMessage" class="success">
+      {{ successMessage }}
+    </div>
+  
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="error">
+      {{ errorMessage }}
     </div>
   </form>
 

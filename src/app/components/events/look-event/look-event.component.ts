@@ -2,6 +2,7 @@ import { Component,Input,Output,EventEmitter, Inject} from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DeleteEventComponent } from 'src/app/forms/delete-event/delete-event.component';
 import { ApiService } from 'src/app/servises/api.service';
+import { AuthService } from 'src/app/servises/Auth/auth.service';
 
 @Component({
   selector: 'app-look-event',
@@ -11,17 +12,15 @@ import { ApiService } from 'src/app/servises/api.service';
 export class LookEventComponent {
     event:any;
     images!: any[];
-    token!:any;
-    constructor(private apiService:ApiService,private dialog:MatDialog,private dialogConfig:MatDialogRef<LookEventComponent>,@Inject(MAT_DIALOG_DATA) public data:any){
+    constructor(private apiService:ApiService,private authService: AuthService,private dialog:MatDialog,private dialogConfig:MatDialogRef<LookEventComponent>,@Inject(MAT_DIALOG_DATA) public data:any){
     }
     ngOnInit(){
       this.event=this.data.event;
-      this.token=this.data.token;
       this.images=this.event.imgUrl;
-      console.log( this.images);
-      console.log("opened")
     }
-    
+    userIsAuthenticated():boolean{
+      return this.authService.isAuthenticated();
+    }
     goBackTodashboard(){
         this.dialogConfig.close();
     }

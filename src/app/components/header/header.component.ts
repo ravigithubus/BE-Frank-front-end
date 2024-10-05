@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from 'src/app/forms/login/login.component';
 import { RegisterComponent } from 'src/app/forms/register/register.component';
+import { AuthService } from 'src/app/servises/Auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ import { RegisterComponent } from 'src/app/forms/register/register.component';
 })
 export class HeaderComponent {
   istrue:boolean=true;
-  constructor(private dialog:MatDialog){
+  constructor(private dialog:MatDialog , private authService:AuthService){
 
   }
   openLoginPage(){
@@ -25,8 +26,13 @@ export class HeaderComponent {
         console.log('The dialog was closed');
     });
   }
-
-
+  userIsAuthenticated():boolean{
+    return this.authService.isAuthenticated();
+  }
+  
+  logout(){
+    this.authService.logout();
+  }
   openResisterPage(){
     const dialogRef= this.dialog.open(RegisterComponent,{
       width:'40%',

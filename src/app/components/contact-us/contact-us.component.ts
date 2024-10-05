@@ -17,6 +17,9 @@ export class ContactUsComponent {
   private apiUrl=environment.apiUrl;
   sendSms(smsForm:any) {
     // Send a POST request to the backend
+    const Name=this.smsData.name;
+    const Message=this.smsData.message;
+    this.smsData.message = Name + "\n" + Message;
     this.http.post<any>(`${this.apiUrl}/send`, this.smsData)
       .subscribe(
         res => this.response = 'Message sent successfully!',

@@ -4,7 +4,7 @@
             <input type="text" placeholder="Search for an event name"  [(ngModel)]="searchTerm"  (change)="findevent()"/>
             <button class="button" (click)="findevent()"><span class="material-symbols-outlined">search</span></button>
         </div>
-        <button *ngIf="Usertoken" class="add-button"  (click)="addEvent()"><span class="material-symbols-outlined">add</span>Add event</button>
+        <button *ngIf="userIsAuthenticated()" class="add-button"  (click)="addEvent()"><span class="material-symbols-outlined">add</span>Add event</button>
     </div>
     <div class="event-stack">
         <div class="event-container" *ngFor="let event of post" (click)="openEvent(event)">
