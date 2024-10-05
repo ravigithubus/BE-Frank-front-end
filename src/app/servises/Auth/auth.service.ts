@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
-
+import { catchError, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,6 +12,7 @@ export class AuthService {
   public users$: Observable<any[]> = this.userSubject.asObservable();
   private loginSubject = new BehaviorSubject<any>(null);
   public token$: Observable<any> = this.loginSubject.asObservable();
+  private tokenKey = 'authToken';
   constructor(private http: HttpClient) { }
  
   getAllUser(){
@@ -20,7 +21,7 @@ export class AuthService {
     })
   }
   register(user: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/user`, user);
+    return this.http.post<any>(`${environment.authUrl}/register`, user);
   }
   deleteUser(id:any) {
     this.http.delete(`${this.apiUrl}/user/${id}`)
@@ -29,18 +30,33 @@ export class AuthService {
       });
   }
 
-  login(credentials: any):any{
-      this.http.post<any>(`${environment.authUrl}/login`, credentials).subscribe(
-        response => {
-          console.log('Login successful', response);
-          this.loginSubject.next(response.token);
-
-          return 'Login successful';
-        },
-        error => {
-          console.error('Login failed', error);
-          return 'Login failed';
-        }
+  login(credentials: any):Observable<any>{
+      return this.http.post<any>(`${environment.authUrl}/login`, credentials).pipe(
+        tap(response => {
+          if (response.token) {
+            this.setToken(response.token);
+          }
+        }),
+        catchError(error => {
+          return of({ error: 'Invalid username or password' });
+        })
       );
   }
+
+  setToken(token: string): void {
+    localStorage.setItem(this.tokenKey, token);
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem(this.tokenKey);
+  }
+
+  isAuthenticated(): boolean {
+    return !!this.getToken();
+  }
+  logout(): void {
+    localStorage.removeItem(this.tokenKey);
+    //this.router.navigate(['/login']);
+  }
+
 }

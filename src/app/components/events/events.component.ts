@@ -17,16 +17,16 @@ export class EventsComponent {
     postSearched:any[]=[];
     eventTochild:any;
     searchTerm!:string;
-    Usertoken!:any;
+    isAuthenticated!:boolean;
     constructor(private apiservice:ApiService,private authService: AuthService,private dialog:MatDialog){}
     ngOnInit(){
       this.getPost();
-      this.authService.token$.subscribe(data=>{
-        this.Usertoken=data;
-      })
-      console.log(this.Usertoken);
+      this.isAuthenticated=this.authService.isAuthenticated();
     }
 
+    userIsAuthenticated():boolean{
+      return this.authService.isAuthenticated();
+    }
     get filteredItems() {
       return this.post.filter(item =>
         item.title.toLowerCase().includes(this.searchTerm.toLowerCase())
@@ -59,12 +59,11 @@ export class EventsComponent {
           width:'100%',
           height:'100%',
           data:{
-            token:this.Usertoken,
+            isAuthenticated:this.isAuthenticated,
             event:event
           }
         })  
       dialogRef.afterClosed().subscribe(result => {
-          console.log('The dialog was closed');
       });
     }
     

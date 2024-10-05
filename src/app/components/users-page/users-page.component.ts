@@ -19,7 +19,9 @@ export class UsersPageComponent {
       console.log(users);
     })
   }
-
+  userIsAuthenticated():boolean{
+    return this.authservice.isAuthenticated();
+  }
   editUser(user: any) {
     console.log('Edit user', user);
     // Implement the edit logic here
