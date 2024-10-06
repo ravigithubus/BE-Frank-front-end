@@ -19,8 +19,12 @@
                 <h2>Send SMS</h2>
                 <form (ngSubmit)="sendSms(smsForm)" #smsForm="ngForm">
                   <div>
-                    <label for="phoneNumber">Name:</label>
-                    <input type="text" id="phoneNumber"  [(ngModel)]="smsData.name" name="phoneNumber">
+                    <label for="name">Name:</label>
+                    <input type="text" id="phoneNumber"  [(ngModel)]="smsData.name" name="name">
+                  </div>
+                  <div>
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="text" id="phoneNumber"  [(ngModel)]="phoneNumber" name="phoneNumber">
                   </div>
                   <div>
                     <label for="message">Message:</label>
