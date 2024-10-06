@@ -12,6 +12,7 @@ export class ContactUsComponent {
     name: '',
     message: ''
   };
+  phoneNumber!:string;
   response: string | undefined;
   constructor(private http: HttpClient) {}
   private apiUrl=environment.apiUrl;
@@ -19,7 +20,7 @@ export class ContactUsComponent {
     // Send a POST request to the backend
     const Name=this.smsData.name;
     const Message=this.smsData.message;
-    this.smsData.message = Name + "\n" + Message;
+    this.smsData.message = Name+"\n"+this.phoneNumber+ "\n" +Message;
     this.http.post<any>(`${this.apiUrl}/send`, this.smsData)
       .subscribe(
         res => this.response = 'Message sent successfully!',
