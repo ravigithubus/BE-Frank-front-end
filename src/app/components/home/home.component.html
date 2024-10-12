@@ -36,6 +36,7 @@
         <p>Our Recent Be Frank</p>
       </div>
       <div class="second-main-carts">
+        <app-loader [isLoading]="loading"></app-loader>
         <div class="cart" *ngFor="let event of recentEvents" (click)="openEvent(event)">
           <img src="assets\pin.png" alt="" id="pin">
           <img src={{event.imgUrl[0].imgUrl}} alt="img" />
