@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment.development';
 import { post } from '../models/post-model';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { LoaderService } from '../loader.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,11 +14,13 @@ export class ApiService {
   public data$: Observable<any[]> = this.dataSubject.asObservable();
 
   private apiUrl=environment.apiUrl;
-  constructor(private http:HttpClient,private datePipe: DatePipe,private router: Router){ }
+  constructor(private http:HttpClient,private datePipe: DatePipe,private router: Router, private loaderService: LoaderService){ }
  
   getPosts():void{
+    this.loaderService.show();
     this.http.get<any[]>(`${this.apiUrl}/post`).subscribe(data=>{
       this.dataSubject.next(data.reverse());
+      this.loaderService.hide()
     })
   }
 

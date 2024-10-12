@@ -5,6 +5,7 @@ import { AddEventComponent } from 'src/app/forms/add-event/add-event.component';
 import { DeleteEventComponent } from 'src/app/forms/delete-event/delete-event.component';
 import { LookEventComponent } from './look-event/look-event.component';
 import { AuthService } from 'src/app/servises/Auth/auth.service';
+import { LoaderService } from 'src/app/loader.service';
 
 
 @Component({
@@ -16,9 +17,14 @@ export class EventsComponent {
     post:any[]=[];
     postSearched:any[]=[];
     eventTochild:any;
+    loading = false;
     searchTerm!:string;
     isAuthenticated!:boolean;
-    constructor(private apiservice:ApiService,private authService: AuthService,private dialog:MatDialog){}
+    constructor(private apiservice:ApiService,private authService: AuthService,private dialog:MatDialog,private loaderService: LoaderService){
+      this.loaderService.isLoading.subscribe((loadingStatus: boolean) => {
+        this.loading = loadingStatus;
+      });
+    }
     ngOnInit(){
       this.getPost();
       this.isAuthenticated=this.authService.isAuthenticated();
@@ -26,6 +32,9 @@ export class EventsComponent {
 
     userIsAuthenticated():boolean{
       return this.authService.isAuthenticated();
+    }
+    userRoleIs():string | null{
+      return this.authService.getRole();
     }
     get filteredItems() {
       return this.post.filter(item =>

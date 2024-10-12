@@ -33,6 +33,7 @@ import { ImagePreviewComponent } from './forms/image-preview/image-preview.compo
 import { CommonModule, DatePipe } from '@angular/common';
 import { UsersPageComponent } from './components/users-page/users-page.component';
 import { DeleteUserComponent } from './forms/delete-user/delete-user.component';
+import { LoaderComponent } from './components/loader/loader.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +53,7 @@ import { DeleteUserComponent } from './forms/delete-user/delete-user.component';
     ImagePreviewComponent,
     UsersPageComponent,
     DeleteUserComponent,
+    LoaderComponent,
  
   ],
   imports: [

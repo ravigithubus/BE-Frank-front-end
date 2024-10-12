@@ -13,15 +13,16 @@ export class RegisterComponent {
   name!:string;
   email!:string;
   password!:string;
-
+  selectedRole!:string;
+  roles = ['admin', 'subAdmin'];
   constructor(private authService: AuthService, private router: Router,private dialogRef:MatDialogRef<RegisterComponent>) {}
 
   onSubmit(form: NgForm): void {
-    this.authService.register({ username:this.name, email: this.email, password: this.password ,role:"admin"}).subscribe(
+    this.authService.register({ username:this.name, email: this.email, password: this.password ,role:this.selectedRole}).subscribe(
       response => {
         form.reset();
-        //this.dialogRef.close();
-        //this.authService.getAllUser();
+        this.dialogRef.close();
+        this.authService.getAllUser();
         console.log("Registration successful",response);
       },
       error => {

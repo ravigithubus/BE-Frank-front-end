@@ -21,6 +21,10 @@ export class LookEventComponent {
     userIsAuthenticated():boolean{
       return this.authService.isAuthenticated();
     }
+
+    userIsAdmin():string | null{
+      return this.authService.getRole();
+    }
     goBackTodashboard(){
         this.dialogConfig.close();
     }

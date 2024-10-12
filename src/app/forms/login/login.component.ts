@@ -20,6 +20,7 @@ export class LoginComponent {
     this.authService.login({ email: this.gmail, password: this.password }).subscribe(
       response => {
         if (response.token) {
+          console.log(response);
           this.successMessage = 'Logged in successfully!';
           this.errorMessage = '';
         } else if (response.error) {
