@@ -11,9 +11,9 @@
         <li><a routerLink="events" routerLinkActive="highlight">Events</a></li>
         <li><a routerLink="about-us" routerLinkActive="highlight">About Us</a></li>
         <li><a routerLink="contact_us" routerLinkActive="highlight">Contact Us</a></li>
+        <li *ngIf="userIsAuthenticated()"><a routerLink="users" routerLinkActive="highlight">Users</a></li>
         <button *ngIf="!userIsAuthenticated()" class="login-button" (click)="openLoginPage()"><span class="material-symbols-outlined login-icon">login</span>Login</button>
         <button  *ngIf="userIsAuthenticated()" class="login-button" (click)="logout()"><span class="material-symbols-outlined login-icon">logout</span>Logout</button>
-        <li *ngIf="userIsAuthenticated()"><a routerLink="userPage" routerLinkActive="highlight">Users</a></li>
       </ul>
     </div>
    

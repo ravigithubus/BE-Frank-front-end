@@ -22,7 +22,7 @@ const routes: Routes = [
     path:'contact_us',component:ContactUsComponent
   }
   ,{
-    path:'userPage',component:UsersPageComponent
+    path:'users',component:UsersPageComponent
   }
 ];
 
