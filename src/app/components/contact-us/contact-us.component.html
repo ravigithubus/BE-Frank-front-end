@@ -1,8 +1,4 @@
 <section class="contact-us">
-  <div class="contact-us-header">
-      <h1>Contact Us</h1>
-      <img src="images.jpg" alt="">
-  </div>
   <div class="contact-us-body">
       <div class="contact-us-left">
               <iframe
@@ -12,27 +8,48 @@
           <p>102, First Floor,</p>
           <p>S.T.Stand, Khopat, Thane(W)-400602</p>
           <p>Phone: +91 9987-437-446</p>
-          <p>Email: info@vsmthane.org</p>
-          
+          <p>Email: info@vsmthane.org</p>  
       </div>
-   
-            <div class="contact-us-right">
+      <div class="contact-us-right">
                 <h2>Send SMS</h2>
                 <form (ngSubmit)="sendSms(smsForm)" #smsForm="ngForm">
-                  <div>
-                    <label for="name">Name:</label>
-                    <input type="text" id="phoneNumber"  [(ngModel)]="smsData.name" name="name">
-                  </div>
-                  <div>
-                    <label for="phoneNumber">Phone Number:</label>
-                    <input type="text" id="phoneNumber"  [(ngModel)]="phoneNumber" name="phoneNumber">
+                   <div>
+                      <label for="name">Name:</label>
+                      <input 
+                        type="text" 
+                        id="name" 
+                        [(ngModel)]="smsData.name" 
+                        name="name" 
+                        required 
+                        #name="ngModel">
+                      <div *ngIf="name.invalid && name.touched" class="error">
+                        *Name is required.
+                      </div>
+                   </div>
+
+
+                   <div>
+                    <label for="phonenumber">Phone Number:</label>
+                    <input type="text" id="phoneNumber"  [(ngModel)]="phoneNumber" name="phonenumber" 
+                    required #phonenumber="ngModel">
+                    <div *ngIf="phonenumber.invalid && phonenumber.touched" class="error">
+                      *Phone Number is required.
+                    </div>
                   </div>
                   <div>
                     <label for="message">Message:</label>
-                    <textarea id="message"  [(ngModel)]="smsData.message" name="message"></textarea>
-                    <button type="submit">Send SMS</button>
+                    <textarea 
+                      id="message" 
+                      [(ngModel)]="smsData.message" 
+                      name="message" 
+                      required 
+                      #message="ngModel">
+                    </textarea>
+                    <div *ngIf="message.invalid && message.touched" class="error">
+                      *Message is required.
+                    </div>
                   </div>
-              
+                  <button type="submit" [disabled]="smsForm.invalid">Send SMS</button>
                 </form>
                 <p *ngIf="response">{{ response }}</p>            
             </div>

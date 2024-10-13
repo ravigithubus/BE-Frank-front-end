@@ -50,7 +50,7 @@ export class UsersPageComponent {
   addUser(){
       const dialogRef= this.dialog.open(RegisterComponent,{
          width:'50%',
-         height:'100%',
+         height:'90%',
          data:{
            name:"Ravids Gaikwad"
          }
