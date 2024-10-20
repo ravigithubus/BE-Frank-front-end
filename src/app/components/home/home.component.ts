@@ -3,6 +3,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/servises/api.service';
 import { LookEventComponent } from '../events/look-event/look-event.component';
 
+
+
+import { LoaderService } from 'src/app/loader.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -10,12 +14,16 @@ import { LookEventComponent } from '../events/look-event/look-event.component';
 })
 export class HomeComponent {
     recentEvents:any[]=[];
-    name="ravi";
+    loading = false;
     currentIndex = 0;
     slideInterval: any;
     slides = 4; // Total number of slides (including images and video)
     transformStyle = 'translateX(0%)';
-    constructor(private apiservice:ApiService,private dialog:MatDialog){}
+    constructor(private apiservice:ApiService,private dialog:MatDialog,private loaderService: LoaderService){
+      this.loaderService.isLoading.subscribe((loadingStatus: boolean) => {
+        this.loading = loadingStatus;
+      });
+    }
     @ViewChild('videoSlide')
     videoSlide!: ElementRef<HTMLVideoElement>;
     ngOnInit(){

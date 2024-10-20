@@ -13,6 +13,7 @@ export class AuthService {
   private loginSubject = new BehaviorSubject<any>(null);
   public token$: Observable<any> = this.loginSubject.asObservable();
   private tokenKey = 'authToken';
+  private roleOfUser='';
   constructor(private http: HttpClient) { }
  
   getAllUser(){
@@ -21,7 +22,7 @@ export class AuthService {
     })
   }
   register(user: any): Observable<any> {
-    return this.http.post<any>(`${environment.authUrl}/register`, user);
+    return this.http.post<any>(`${this.apiUrl}/register`, user);
   }
   deleteUser(id:any) {
     this.http.delete(`${this.apiUrl}/user/${id}`)
@@ -31,10 +32,11 @@ export class AuthService {
   }
 
   login(credentials: any):Observable<any>{
-      return this.http.post<any>(`${environment.authUrl}/login`, credentials).pipe(
+      return this.http.post<any>(`${this.apiUrl}/login`, credentials).pipe(
         tap(response => {
           if (response.token) {
             this.setToken(response.token);
+            this.setRole(response.user.role);
           }
         }),
         catchError(error => {
@@ -47,10 +49,16 @@ export class AuthService {
     localStorage.setItem(this.tokenKey, token);
   }
 
+  setRole(role: string): void {
+    return localStorage.setItem(this.roleOfUser, role);
+  }
+
   getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
   }
-
+  getRole():string | null{
+    return localStorage.getItem(this.roleOfUser);
+  }
   isAuthenticated(): boolean {
     return !!this.getToken();
   }

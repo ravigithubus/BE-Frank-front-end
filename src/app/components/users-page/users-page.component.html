@@ -3,7 +3,7 @@
   404 page not found
 </div>
 
-<div *ngIf="userIsAuthenticated()" class="add-button">
+<div *ngIf="userIsAuthenticated() && userIsAdmin()=='admin'" class="add-button">
   <button  class="add-button"   (click)="addUser()"><span class="material-symbols-outlined">add</span></button>
 </div>
 <div *ngIf="userIsAuthenticated()" class="table-container">
@@ -14,19 +14,20 @@
           <th>Username</th>
           <th>Email</th>
           <th>Role</th>
-          <th>Actions</th>
+          <th *ngIf="userIsAdmin()=='admin'">Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let user of users; let i = index">
           <td>{{ i + 1 }}</td>
           <td>{{user.username }}</td>
-          <td>{{user.gmail}}</td>
-          <td>{{user.password}}</td>
-          <td>
+          <td>{{user.email}}</td>
+          <td>{{user.role}}</td>
+          <td *ngIf="userIsAdmin()=='admin'">
             <button (click)="editUser(user)">Edit</button>
-            <button (click)="deleteUser(user._id,user.username)">Delete</button>
+            <button (click)="deleteUser(user)">Delete</button>
           </td>
+          <!-- user._id,user.username -->
         </tr>
       </tbody>
     </table>

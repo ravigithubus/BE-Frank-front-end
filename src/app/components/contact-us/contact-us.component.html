@@ -1,37 +1,55 @@
 <section class="contact-us">
-  <div class="contact-us-header">
-      <h1>Contact Us</h1>
-      <img src="images.jpg" alt="">
-  </div>
   <div class="contact-us-body">
       <div class="contact-us-left">
-          <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2990.274257380938!2d-70.56068388481569!3d41.45496659976631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e52963ac45bbcb%3A0xf05e8d125e82af10!2sDos%20Mas!5e0!3m2!1sen!2sus!4v1671220374408!5m2!1sen!2sus"
+              <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.5942034829953!2d72.97101911528944!3d19.207474486981154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b91b746b3b9b%3A0x9b632f7ac7b09a5b!2sVidyadaan%20Sahayyak%20Mandal%20(VSM)%2C%20Thane!5e0!3m2!1sen!2sin!4v1696756390135!5m2!1sen!2sin"
               width="600" height="350" style="border:0;" allowfullscreen="" loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"></iframe>
           <p>102, First Floor,</p>
           <p>S.T.Stand, Khopat, Thane(W)-400602</p>
           <p>Phone: +91 9987-437-446</p>
-          <p>Email: info@vsmthane.org</p>
+          <p>Email: info@vsmthane.org</p>  
       </div>
-   
-            <div class="contact-us-right">
+      <div class="contact-us-right">
                 <h2>Send SMS</h2>
                 <form (ngSubmit)="sendSms(smsForm)" #smsForm="ngForm">
-                  <div>
-                    <label for="name">Name:</label>
-                    <input type="text" id="phoneNumber"  [(ngModel)]="smsData.name" name="name">
-                  </div>
-                  <div>
-                    <label for="phoneNumber">Phone Number:</label>
-                    <input type="text" id="phoneNumber"  [(ngModel)]="phoneNumber" name="phoneNumber">
+                   <div>
+                      <label for="name">Name:</label>
+                      <input 
+                        type="text" 
+                        id="name" 
+                        [(ngModel)]="smsData.name" 
+                        name="name" 
+                        required 
+                        #name="ngModel">
+                      <div *ngIf="name.invalid && name.touched" class="error">
+                        *Name is required.
+                      </div>
+                   </div>
+
+
+                   <div>
+                    <label for="phonenumber">Phone Number:</label>
+                    <input type="text" id="phoneNumber"  [(ngModel)]="phoneNumber" name="phonenumber" 
+                    required #phonenumber="ngModel">
+                    <div *ngIf="phonenumber.invalid && phonenumber.touched" class="error">
+                      *Phone Number is required.
+                    </div>
                   </div>
                   <div>
                     <label for="message">Message:</label>
-                    <textarea id="message"  [(ngModel)]="smsData.message" name="message"></textarea>
-                    <button type="submit">Send SMS</button>
+                    <textarea 
+                      id="message" 
+                      [(ngModel)]="smsData.message" 
+                      name="message" 
+                      required 
+                      #message="ngModel">
+                    </textarea>
+                    <div *ngIf="message.invalid && message.touched" class="error">
+                      *Message is required.
+                    </div>
                   </div>
-              
+                  <button type="submit" [disabled]="smsForm.invalid">Send SMS</button>
                 </form>
                 <p *ngIf="response">{{ response }}</p>            
             </div>

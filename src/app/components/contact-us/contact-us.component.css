@@ -2,6 +2,7 @@
 .contact-us {
     width: 100%;
     height: auto;
+    display: flex;
     padding: 2rem;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -27,8 +28,11 @@
 
 .contact-us-body {
     display: flex;
-    justify-content: space-between;
+    /* align-items: center; */
+    justify-content:center;
+    flex-wrap: wrap;
     padding-top: .8rem;
+    gap: 20px;
 }
 
 .contact-us-left p{
@@ -47,81 +51,16 @@
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     font-family: 'Arial', sans-serif;
-  }
+  } 
   
-  .contact-us-right h2 {
+ .contact-us-right h2 {
     text-align: center;
     margin-bottom: 20px;
     color: #333;
     font-size: 24px;
   }
   
-  /* Form styling */
-  .contact-us-right form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .contact-us-right label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #555;
-  }
-  
-  .contact-us-right input[type="text"],
-  .contact-us-right textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    margin-bottom: 15px;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
-    width: 100%;
-  }
-  
-  .contact-us-right input[type="text"]:focus,
-  .contact-us-right textarea:focus {
-    border-color: #007bff;
-    outline: none;
-  }
-  
-  /* Button styling */
-  .contact-us-right button {
-    padding: 10px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
-  }
-  
-  .contact-us-right button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Responsive design */
-  @media (max-width: 600px) {
-    .contact-us-right {
-      padding: 15px;
-    }
-  
-    .contact-us-right h2 {
-      font-size: 22px;
-    }
-  
-    .contact-us-right input[type="text"],
-    .contact-us-right textarea {
-      font-size: 14px;
-    }
-  
-    .contact-us-right button {
-      font-size: 14px;
-    }
-  }
+
   
   /* Response message */
   .contact-us-right p {
@@ -131,4 +70,90 @@
     margin-top: 15px;
   }
   
+/* Form container styling */
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+/* Label styling */
+form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+  font-size: 14px;
+}
+
+/* Input and textarea styling */
+form input[type="text"],
+form textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  background-color: #fff;
+}
+
+/* Focus state for inputs and textarea */
+form input[type="text"]:focus,
+form textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+/* Error message styling */
+.error {
+  color: #ff0000;
+  font-size: 13px;
+  margin-top: -15px;
+  margin-bottom: 15px;
+}
+
+/* Button styling */
+form button {
+  padding: 12px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+}
+
+/* Button hover effect */
+form button:hover {
+  background-color: #0056b3;
+  transform: scale(1.03);
+}
+
+/* Button focus state */
+form button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+  form {
+    padding: 15px;
+  }
+
+  form button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
 
