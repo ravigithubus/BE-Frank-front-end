@@ -1,8 +1,3 @@
-
-<div *ngIf="!userIsAuthenticated()">
-  404 page not found
-</div>
-
 <div *ngIf="userIsAuthenticated() && userIsAdmin()=='admin'" class="add-button">
   <button  class="add-button"   (click)="addUser()"><span class="material-symbols-outlined">add</span></button>
 </div>

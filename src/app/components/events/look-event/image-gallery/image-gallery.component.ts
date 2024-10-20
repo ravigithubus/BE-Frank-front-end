@@ -18,8 +18,8 @@ export class ImageGalleryComponent {
 
   openPreview(index: number): void {
     const dialogRef = this.dialog.open(ImagePreviewComponent, {
-      width:'90%',
-      height:'90%',
+      width:'100%',
+      height:'100%',
       data: { images: this.images, index: index }
     });
 

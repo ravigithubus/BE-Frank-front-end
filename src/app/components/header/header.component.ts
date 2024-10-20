@@ -31,7 +31,10 @@ export class HeaderComponent {
   }
   
   logout(){
+    const logUot=confirm("Are you sure to log out.");
+    if(logUot){
     this.authService.logout();
+    }
   }
   openResisterPage(){
     const dialogRef= this.dialog.open(RegisterComponent,{

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { catchError, tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +15,7 @@ export class AuthService {
   public token$: Observable<any> = this.loginSubject.asObservable();
   private tokenKey = 'authToken';
   private roleOfUser='';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router:Router) { }
  
   getAllUser(){
     this.http.get<any>(`${this.apiUrl}/user`).subscribe(users=>{
@@ -64,7 +65,7 @@ export class AuthService {
   }
   logout(): void {
     localStorage.removeItem(this.tokenKey);
-    //this.router.navigate(['/login']);
+    this.router.navigate(['/home']);
   }
 
 }
