@@ -12,7 +12,8 @@
   }
   .preview-container div img {
     width:85%;
-    max-height:82%;
+    height:auto;
+    object-fit:auto-fit;
   }
   .close-button{
       position: absolute;
