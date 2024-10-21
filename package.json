@@ -25,9 +25,11 @@
     "@ngrx/store": "^16.3.0",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
+    "flowbite": "^2.5.2",
     "material": "^0.9.9",
     "rxjs": "~7.8.0",
     "swiper": "^11.1.14",
+    "tailwindcss": "^3.4.14",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },

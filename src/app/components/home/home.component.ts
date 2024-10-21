@@ -2,7 +2,11 @@ import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/co
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/servises/api.service';
 import { LookEventComponent } from '../events/look-event/look-event.component';
+
+
+
 import { LoaderService } from 'src/app/loader.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
